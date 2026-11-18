@@ -17,7 +17,7 @@ export default function About() {
       </section>
       <section className="split">
         <div className="split__media">
-          <SmartImage name="skyward" priority ratio={4 / 5} sizes="(max-width: 900px) 100vw, 50vw" />
+          <SmartImage name="lookbook-2" priority ratio={4 / 5} sizes="(max-width: 900px) 100vw, 50vw" />
         </div>
         <div className="split__copy">
           <div className="eyebrow">OUR STORY</div>

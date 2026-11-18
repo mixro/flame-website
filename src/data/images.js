@@ -1,28 +1,48 @@
-// Free-licence photography (Unsplash licence). Only the photo id is stored;
-// SmartImage builds responsive WebP URLs from it. Credits are listed in README.
+// FLAME campaign photography ("Toleo 001", Dar es Salaam).
+// Files live in src/assets/campaign/<name>-<width>.webp. `focus` is the CSS object-position
+// used when a photo is cropped (e.g. a landscape shot shown as a portrait tile).
 export const photos = {
-  hoodieSeated: {
-    id: 'photo-1595196925110-ab942dce4f85',
-    alt: 'Person in an all-black hoodie seated on a wooden bench',
-    ratio: 4 / 5,
-    credit: 'Marshal Quast',
-    handle: 'marshalquast',
-    page: 'https://unsplash.com/photos/a0EfucCg3uk',
+  'drop-feature': {
+    alt: 'Model in the Ember Zip Hoodie in front of a carved Zanzibari door in Stone Town',
+    focus: '50% 40%',
   },
-  darkRoom: {
-    id: 'photo-1692776100567-31aa5bc1e388',
-    alt: 'Person in a black hoodie in a dark room',
-    ratio: 4 / 5,
-    credit: 'Harshit Solanki',
-    handle: 'hxrriswn',
-    page: 'https://unsplash.com/photos/JhKblPS3kc8',
+  'lookbook-1': {
+    alt: 'Two models in a black FLAME hoodie and crewneck on the Dar es Salaam sea wall at blue hour',
+    focus: '50% 50%',
   },
-  skyward: {
-    id: 'photo-1616702932373-8875c950f85e',
-    alt: 'Person in a black hoodie looking up at the sky',
-    ratio: 4 / 5,
-    credit: 'Jakob Rosen',
-    handle: 'jakobnoahrosen',
-    page: 'https://unsplash.com/photos/9O2F5D4FvZg',
+  'lookbook-2': {
+    alt: 'Model in the Core Long Sleeve on the deck of a dhow at dawn',
+    focus: '50% 40%',
+  },
+  'lookbook-3': {
+    alt: 'Model in the Ember Zip Hoodie and Shadow Cap on a Kariakoo rooftop at dusk',
+    focus: '56% 40%',
+  },
+  'tile-hoodies': {
+    alt: 'Model in the Eclipse Crewneck against a coral-stone wall',
+    focus: '50% 35%',
+  },
+  'tile-tees': {
+    alt: 'Model in the Core Tee seated on concrete stairs',
+    focus: '50% 40%',
+  },
+  'tile-headwear': {
+    alt: 'Model in the Shadow Beanie on the seafront at night',
+    focus: '48% 35%',
+  },
+  'tile-bags': {
+    alt: 'Model walking with the Voyage Crossbody on a Dar es Salaam street at dusk',
+    focus: '50% 50%',
+  },
+  origin: {
+    alt: 'Dar es Salaam skyline at night seen from the harbour, a dhow in the foreground',
+    focus: '50% 60%',
+  },
+  'detail-print': { alt: 'Close-up of the raised tonal FLAME print on the Core Tee', focus: '50% 50%' },
+  'detail-patch': { alt: 'Close-up of the woven FLAME patch on the Shadow Beanie', focus: '50% 50%' },
+  'detail-foil': { alt: 'Close-up of the silver-foil FLAME logo on the Voyage Clutch', focus: '50% 50%' },
+  'journal-design': {
+    alt: 'A tailor pinning black fleece beside a FLAME hoodie and logo sketches',
+    focus: '50% 50%',
   },
 };

@@ -37,6 +37,15 @@ export default function Footer() {
           </div>
         )}
       </div>
+      {site.payments.length > 0 && (
+        <div className="footer__pay" aria-label="Payment methods">
+          <span>We accept</span>
+          <ul>
+            {site.payments.map((p) => <li key={p}>{p}</li>)}
+          </ul>
+        </div>
+      )}
+      {site.swahili && <p className="footer__signoff">Asante kwa kuchagua FLAME.</p>}
       <div className="footer__bottom">
         <span>© {new Date().getFullYear()} FLAME™. All rights reserved.</span>
         <span>{site.location}</span>

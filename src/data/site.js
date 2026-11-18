@@ -14,6 +14,10 @@ export const site = {
   // Handle without the @, e.g. 'flame.tz'
   instagram: '[INSTAGRAM]',
   location: 'Dar es Salaam, Tanzania',
+  // Small Swahili labels beside English headings (e.g. "Toleo 001"). Set false to hide them.
+  swahili: true,
+  // Payment methods shown in the footer once confirmed, e.g. ['M-Pesa', 'Mixx by Yas', 'Airtel Money', 'Visa', 'Mastercard'].
+  payments: [],
 };
 
 export const nav = [

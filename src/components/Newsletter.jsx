@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { site } from '../data/site';
 
 // Set to your signup endpoint (Formspree, Brevo, Mailchimp form action...). Until it is set,
 // the form shows a clear "opens at launch" message instead of pretending to save the email.
@@ -28,7 +29,8 @@ export default function Newsletter() {
 
   return (
     <section className="newsletter">
-      <div className="eyebrow eyebrow--light">THE LIST</div>
+      <span className="newsletter__rule" aria-hidden="true" />
+      <div className="eyebrow eyebrow--light">{site.swahili ? 'Orodha · The list' : 'The list'}</div>
       <h2 className="display">
         Get the next drop <em>first.</em>
       </h2>

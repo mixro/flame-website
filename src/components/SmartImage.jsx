@@ -1,42 +1,47 @@
 import { useState } from 'react';
 import { photos } from '../data/images';
 
-const WIDTHS = [480, 800, 1200, 1800];
-const src = (id, w) => `https://images.unsplash.com/${id}?auto=format&fm=webp&fit=crop&q=55&w=${w}`;
+const files = import.meta.glob('../assets/campaign/*.webp', { eager: true, import: 'default' });
+
+// All available widths for one photo, smallest first.
+function sources(name) {
+  return Object.entries(files)
+    .map(([path, url]) => {
+      const m = path.match(/\/([^/]+)-(\d+)\.webp$/);
+      return m && m[1] === name ? { w: Number(m[2]), url } : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.w - b.w);
+}
 
 /**
- * Responsive, lazy, layout-stable photo.
+ * Responsive, lazy, layout-stable campaign photo.
  * - srcset + sizes so phones never download desktop files
- * - fixed aspect ratio so nothing shifts while loading
+ * - fixed aspect ratio (crop point from `focus`) so nothing shifts while loading
  * - dark placeholder, fades in on load
- * - toned to the FLAME black (greyscale + darken) in CSS
- * - falls back to the placeholder if the host is unreachable
  */
-export default function SmartImage({ name, sizes = '100vw', priority = false, ratio, className = '', alt }) {
+export default function SmartImage({ name, sizes = '100vw', priority = false, ratio, className = '', alt, focus, shade = false }) {
   const photo = photos[name];
   const [loaded, setLoaded] = useState(false);
-  const [failed, setFailed] = useState(false);
-  if (!photo) return null;
-  const r = ratio || photo.ratio;
-  const w = 1200;
+  const list = photo ? sources(name) : [];
+  if (!photo || !list.length) return null;
+  const mid = list[Math.min(1, list.length - 1)];
   return (
-    <div className={`smart-img ${loaded ? 'is-loaded' : ''} ${className}`} style={{ aspectRatio: r }}>
-      {!failed && (
-        <img
-          src={src(photo.id, 800)}
-          srcSet={WIDTHS.map((x) => `${src(photo.id, x)} ${x}w`).join(', ')}
-          sizes={sizes}
-          width={w}
-          height={Math.round(w / r)}
-          alt={alt ?? photo.alt}
-          loading={priority ? 'eager' : 'lazy'}
-          fetchpriority={priority ? 'high' : 'auto'}
-          decoding="async"
-          onLoad={() => setLoaded(true)}
-          onError={() => setFailed(true)}
-        />
-      )}
-      <span className="smart-img__shade" aria-hidden="true" />
+    <div className={`smart-img ${loaded ? 'is-loaded' : ''} ${className}`} style={ratio ? { aspectRatio: ratio } : undefined}>
+      <img
+        src={mid.url}
+        srcSet={list.map((s) => `${s.url} ${s.w}w`).join(', ')}
+        sizes={sizes}
+        width={mid.w}
+        height={ratio ? Math.round(mid.w / ratio) : undefined}
+        alt={alt ?? photo.alt}
+        style={{ objectPosition: focus || photo.focus }}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+      />
+      {shade && <span className="smart-img__shade" aria-hidden="true" />}
     </div>
   );
 }

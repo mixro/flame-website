@@ -115,6 +115,7 @@
 
 @media (max-width: 900px) {
   .header__nav { display: none; }
+  .header__logo img { width: 92px; height: auto; }
 }
 
 /* ---------- product image / card ---------- */

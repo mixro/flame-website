@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Lit from within.',
   currency: 'TZS',
   // Show the slim "preview" bar until real data is filled in.
-  showPlaceholderNotice: true,
+  showPlaceholderNotice: false,
   // Set to a real checkout URL to enable the checkout button.
   checkoutUrl: '',
   // International format, digits only (e.g. '255712345678'). When set and there is no

@@ -59,8 +59,8 @@
   /* photo sized by width (both faces stay in frame) and lifted so the heads sit just under the header;
      the photo's lower edge fades into the black hero behind the headline and buttons */
   .hero__media img {
-    width: 135vw; max-width: none; height: auto; left: -21vw; right: auto; bottom: auto;
-    top: calc(var(--top-h) + 18px - 74.8vw);
+    width: 112vw; max-width: none; height: auto; left: -6vw; right: auto; bottom: auto;
+    top: calc(var(--top-h) + 14px - 38.9vw);
     -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 82%, transparent 100%);
   }

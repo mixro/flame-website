@@ -1,5 +1,6 @@
 // Product photography. Files live in src/assets/products/ as
-// `<kind>-<logo>-<width>.webp` (kind: hoodie | tee | beanie | clutch, logo: black | white).
+// `<kind>-<logo>-<width>.webp` (kind: hoodie | ziphoodie | crewneck | tee | longsleeve | beanie | cap | clutch | crossbody,
+// logo: black | white).
 // Images are 4:5 cut-outs on a transparent background, so the page backdrop shows through.
 const files = import.meta.glob('../assets/products/*.webp', { eager: true, import: 'default' });
 
@@ -10,6 +11,11 @@ const LABELS = {
   tee: 't-shirt',
   beanie: 'beanie',
   clutch: 'clutch bag',
+  ziphoodie: 'zip hoodie',
+  crewneck: 'crewneck sweatshirt',
+  longsleeve: 'long-sleeve T-shirt',
+  cap: 'baseball cap',
+  crossbody: 'crossbody bag',
 };
 const TREATMENT = { black: 'tonal black logo', white: 'visible white logo' };
 

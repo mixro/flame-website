@@ -16,7 +16,9 @@
   --font-ui: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --gutter: 40px;
-  --header-h: 76px;
+  --bar-h: 84px;
+  --nav-h: 40px;
+  --header-h: calc(var(--bar-h) + var(--nav-h));
   --notice-h: 0px;
   --top-h: calc(var(--header-h) + var(--notice-h));
   --radius: 2px;
@@ -24,5 +26,5 @@
 }
 .has-notice { --notice-h: 30px; --top-h: calc(var(--header-h) + var(--notice-h)); }
 @media (max-width: 900px) {
-  :root { --gutter: 20px; --header-h: 64px; }
+  :root { --gutter: 20px; --bar-h: 64px; --nav-h: 0px; }
 }

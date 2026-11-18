@@ -17,7 +17,7 @@ export default function Header({ overlay = false }) {
   useOverlay(menu, () => setMenu(false), panelRef);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -27,7 +27,7 @@ export default function Header({ overlay = false }) {
 
   return (
     <>
-      <div className={`site-top ${solid ? 'is-solid' : ''}`}>
+      <div className={`site-top ${solid ? 'is-solid' : ''} ${scrolled ? 'is-compact' : ''}`}>
         {site.showPlaceholderNotice && (
           <div className="notice">Preview site · Prices and details at launch</div>
         )}
@@ -46,15 +46,8 @@ export default function Header({ overlay = false }) {
               </svg>
             </button>
             <Link to="/" className="header__logo" aria-label="FLAME home">
-              <Logo variant="white" width={124} />
+              <Logo variant="white" width={138} />
             </Link>
-            <nav className="header__nav" aria-label="Main">
-              {nav.map((n) => (
-                <Link key={n.label} to={n.to} className={current === n.to ? 'is-active' : undefined} aria-current={current === n.to ? 'page' : undefined}>
-                  {n.label}
-                </Link>
-              ))}
-            </nav>
             <div className="header__tools">
               <button type="button" className="icon-btn" aria-label={`Open cart, ${count} ${count === 1 ? 'item' : 'items'}`} onClick={openCart}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -65,6 +58,13 @@ export default function Header({ overlay = false }) {
               </button>
             </div>
           </div>
+          <nav className="header__nav" aria-label="Main">
+            {nav.map((n) => (
+              <Link key={n.label} to={n.to} className={current === n.to ? 'is-active' : undefined} aria-current={current === n.to ? 'page' : undefined}>
+                {n.label}
+              </Link>
+            ))}
+          </nav>
         </header>
       </div>
 

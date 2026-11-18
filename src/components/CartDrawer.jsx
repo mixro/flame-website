@@ -42,7 +42,7 @@ export default function CartDrawer() {
         {items.length === 0 ? (
           <div className="cart__empty">
             <p className="cart__empty-title">Your cart is empty.</p>
-            <p>The first drop is four pieces in one deep black.</p>
+            <p>The first drop is nine pieces in one deep black.</p>
             <Link to="/shop" className="btn btn--solid" onClick={closeCart} tabIndex={tab}>
               Shop the drop
             </Link>

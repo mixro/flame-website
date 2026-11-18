@@ -7,6 +7,11 @@ import { catalogue } from '../data/products';
 import { stories } from '../data/journal';
 import { useSeo } from '../hooks/useSeo';
 import { useReveal } from '../hooks/useReveal';
+import heroWide1024 from '../assets/hero/campaign-wide-1024.webp';
+import heroWide1600 from '../assets/hero/campaign-wide-1600.webp';
+import heroWide2560 from '../assets/hero/campaign-wide-2560.webp';
+import heroTall720 from '../assets/hero/campaign-tall-720.webp';
+import heroTall1080 from '../assets/hero/campaign-tall-1080.webp';
 import { isFilled, site } from '../data/site';
 
 const drop = ['duality-hoodie:black', 'core-tee:black', 'shadow-beanie:white', 'voyage-clutch:white']
@@ -39,25 +44,30 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="hero__copy">
-          <div className="eyebrow eyebrow--light">DROP 001</div>
+        <picture className="hero__media">
+          <source media="(max-width: 700px)" srcSet={`${heroTall720} 720w, ${heroTall1080} 1080w`} sizes="100vw" />
+          <img
+            src={heroWide1600}
+            srcSet={`${heroWide1024} 1024w, ${heroWide1600} 1600w, ${heroWide2560} 2560w`}
+            sizes="100vw"
+            alt="Two models in black FLAME hoodies, one holding the Voyage Clutch, the other wearing the Shadow Beanie"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div className="hero__shade" aria-hidden="true" />
+        <div className="hero__content">
           <h1 className="hero__title">
             Lit from
             <br />
             <em>within.</em>
           </h1>
-          <p className="lede lede--light">
-            One deep black, built with texture. Hoodies, tees and accessories where the logo shows through thread and relief, not colour.
-          </p>
-          <div className="btn-row">
-            <Link to="/shop" className="btn btn--light">Shop the drop</Link>
-            <Link to="/shop?c=hoodies" className="btn btn--ghost">Hoodies</Link>
+          <div className="hero__ctas">
+            <Link to="/shop" className="btn btn--hero">Shop the drop</Link>
+            <Link to="/shop?c=hoodies" className="btn btn--hero">Shop hoodies</Link>
           </div>
         </div>
-        <div className="hero__art">
-          <ProductImage kind="hoodie" logo="white" priority sizes="(max-width: 900px) 90vw, 45vw" />
-        </div>
-        <span className="hero__scroll" aria-hidden="true">Scroll</span>
+        <span className="hero__line" aria-hidden="true" />
       </section>
 
       <section className="section section--sand">

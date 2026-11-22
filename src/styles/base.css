@@ -18,6 +18,11 @@ button { cursor: pointer; }
 h1, h2, h3, p { margin: 0; }
 ul { margin: 0; }
 :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+/* No blue tap flash on phones; no focus ring after a tap or click (keyboard focus still shows) */
+html, a, button, summary, label, input, select, textarea, [role='button'] { -webkit-tap-highlight-color: transparent; }
+:focus:not(:focus-visible) { outline: none; }
+/* No accidental text selection when tapping or long-pressing controls */
+button, .btn, .opt, summary, .icon-btn, .card, .tile { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 main:focus { outline: none; }
 
 .sr-only {
